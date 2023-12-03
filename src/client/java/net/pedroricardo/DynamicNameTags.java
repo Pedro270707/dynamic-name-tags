@@ -1,7 +1,7 @@
 package net.pedroricardo;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.mob.VindicatorEntity;
 import net.minecraft.entity.passive.RabbitEntity;
 import net.minecraft.entity.passive.SheepEntity;
@@ -9,10 +9,6 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.math.Vec3d;
-import org.joml.AxisAngle4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
