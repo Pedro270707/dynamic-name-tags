@@ -12,6 +12,10 @@ import java.util.Map;
 public class DynamicNameTagsRegistry {
     private static final Map<String, EntityFunction> REGISTRY = new HashMap<>();
 
+    public static void remove(String entityName) {
+        REGISTRY.remove(entityName);
+    }
+
     protected static void freezeRegistry() {
         Map<String, EntityFunction> frozenRegistry = Map.copyOf(REGISTRY);
         REGISTRY.clear();
