@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "net.pedroricardo.mixin.client",
+	"compatibilityLevel": "JAVA_17",
+	"client": [
+		"ApplyEntityFunctionsMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
