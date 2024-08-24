@@ -1,0 +1,11 @@
+{
+  "matches": "Toast",
+  "predicate": {
+    "type": "minecraft:rabbit"
+  },
+  "text": {
+    "color": "gold",
+    "translate": "dynamicnametags.literal"
+  },
+  "text_functions": []
+}

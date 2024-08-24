@@ -1,0 +1,12 @@
+{
+  "matches": "jeb_",
+  "predicate": {
+    "type": "minecraft:sheep"
+  },
+  "text": {
+    "translate": "dynamicnametags.literal"
+  },
+  "text_functions": [
+    "dynamicnametags:jeb_sheep"
+  ]
+}

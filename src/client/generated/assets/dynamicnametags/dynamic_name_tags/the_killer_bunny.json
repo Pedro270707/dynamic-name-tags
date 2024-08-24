@@ -1,0 +1,13 @@
+{
+  "matches": "The Killer Bunny",
+  "predicate": {
+    "type": "minecraft:rabbit",
+    "nbt": "{RabbitType:99}"
+  },
+  "text": {
+    "color": "dark_red",
+    "italic": true,
+    "translate": "dynamicnametags.literal"
+  },
+  "text_functions": []
+}

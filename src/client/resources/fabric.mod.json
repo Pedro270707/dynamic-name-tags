@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "dynamicnametags",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"name": "Dynamic Name Tags",
 	"description": "This mod adds special names to jeb_ sheep and Dinnerbone/Grumm mobs",
 	"authors": [
@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"client": [
 			"net.pedroricardo.DynamicNameTags"
+		],
+		"fabric-datagen": [
+			"net.pedroricardo.datagen.DynamicNameTagsDatagen"
 		]
 	},
 	"mixins": [
@@ -26,12 +29,9 @@
 		}
 	],
 	"depends": {
-		"fabricloader": ">=0.15.0",
-		"minecraft": "~1.20",
-		"java": ">=17"
-	},
-	"suggests": {
-		"another-mod": "*"
+		"fabricloader": ">=0.16.2",
+		"minecraft": "~1.21",
+		"java": ">=21"
 	},
 	"accessWidener": "dynamicnametags.accesswidener"
 }

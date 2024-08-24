@@ -1,0 +1,11 @@
+{
+  "matches": "Johnny",
+  "predicate": {
+    "type": "minecraft:vindicator"
+  },
+  "text": {
+    "color": "red",
+    "translate": "dynamicnametags.literal"
+  },
+  "text_functions": []
+}
