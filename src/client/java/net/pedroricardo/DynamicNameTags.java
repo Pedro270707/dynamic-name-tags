@@ -12,13 +12,14 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class DynamicNameTags implements ClientModInitializer {
 	public static final String MOD_ID = "dynamicnametags";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final List<Function<RegistryWrapper.WrapperLookup, DynamicNameTag>> DYNAMIC_NAME_TAGS = new ArrayList<>();
+	public static final List<Function<RegistryWrapper.WrapperLookup, Optional<DynamicNameTag>>> DYNAMIC_NAME_TAGS = new ArrayList<>();
 
 	@Override
 	public void onInitializeClient() {

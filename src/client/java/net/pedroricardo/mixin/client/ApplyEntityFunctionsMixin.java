@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 @Mixin(EntityRenderer.class)
@@ -42,9 +43,10 @@ public class ApplyEntityFunctionsMixin<T extends Entity> {
         if (!this.isRecall) {
             this.isRecall = true;
 
-            for (Function<RegistryWrapper.WrapperLookup, DynamicNameTag> function : DynamicNameTags.DYNAMIC_NAME_TAGS) {
-                DynamicNameTag dynamicNameTag = function.apply(entity.getWorld().getRegistryManager());
-                if (dynamicNameTag.pattern().matcher(text.getString()).matches() && (dynamicNameTag.predicate().isEmpty() || dynamicNameTag.predicate().get().test(entity.getWorld(), MinecraftClient.getInstance().player != null ? MinecraftClient.getInstance().player.getPos() : null, entity))) {
+            for (Function<RegistryWrapper.WrapperLookup, Optional<DynamicNameTag>> function : DynamicNameTags.DYNAMIC_NAME_TAGS) {
+                Optional<DynamicNameTag> optional = function.apply(entity.getWorld().getRegistryManager());
+                DynamicNameTag dynamicNameTag;
+                if (optional.isPresent() && (dynamicNameTag = optional.get()).pattern().matcher(text.getString()).matches() && (dynamicNameTag.predicate().isEmpty() || dynamicNameTag.predicate().get().test(entity.getWorld(), MinecraftClient.getInstance().player != null ? MinecraftClient.getInstance().player.getPos() : null, entity))) {
                     Text original = text;
                     text = dynamicNameTag.text().copy();
                     if (text.getContent() instanceof TranslatableTextContent translatable) {

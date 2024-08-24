@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.function.Function;
@@ -30,7 +31,7 @@ public class DynamicNameTagResourceListener implements IdentifiableResourceReloa
 
     @Override
     public CompletableFuture<Void> reload(Synchronizer synchronizer, ResourceManager manager, Profiler prepareProfiler, Profiler applyProfiler, Executor prepareExecutor, Executor applyExecutor) {
-        List<Function<RegistryWrapper.WrapperLookup, DynamicNameTag>> list = new ArrayList<>();
+        List<Function<RegistryWrapper.WrapperLookup, Optional<DynamicNameTag>>> list = new ArrayList<>();
 
         Map<Identifier, Resource> resources = manager.findResources("dynamic_name_tags", id -> id.getPath().endsWith(".json"));
 
@@ -39,7 +40,7 @@ public class DynamicNameTagResourceListener implements IdentifiableResourceReloa
         for (Map.Entry<Identifier, Resource> entry : resources.entrySet()) {
             try {
                 final JsonElement element = JsonParser.parseReader(new InputStreamReader(entry.getValue().getInputStream()));
-                list.add(lookup -> DynamicNameTag.CODEC.parse(lookup.getOps(JsonOps.INSTANCE), element).getOrThrow());
+                list.add(lookup -> DynamicNameTag.CODEC.parse(lookup.getOps(JsonOps.INSTANCE), element).result());
             } catch (IOException e) {
                 e.printStackTrace();
             }
